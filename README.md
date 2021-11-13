@@ -5,4 +5,4 @@ Just a school project
 
 #Vagrant 
 
-Install vagrant: `https://www.vagrantup.com/downloads`
+Install vagrant: https://www.vagrantup.com/downloads
