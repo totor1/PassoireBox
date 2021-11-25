@@ -15,6 +15,3 @@ Install vagrant: https://www.vagrantup.com/downloads
 
 #Default kali login: 'vagrant/vagrant'
 
-# Setting keyboard layout to AZERTY in kali vm
-
-In terminal run './qwerty.sh'
