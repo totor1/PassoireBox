@@ -19,5 +19,5 @@ Vagrant.configure("2") do |config|
       attacker.vm.provision "shell", inline: $script      
       #attacker.memory = "2048"
   end
-
+#
 end
