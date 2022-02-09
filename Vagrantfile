@@ -15,7 +15,7 @@ SCRIPT
 
 Vagrant.configure("2") do |config|
   config.vm.define "target" do |target|    
-    target.vm.box = "hashicorp/precise64"
+    target.vm.box = "ubuntu/xenial64"
     target.vm.network "private_network", ip: "192.168.60.10"
     #target.vm.network "forwarded_port", guest: 80, host: 8080
     target.vm.provision "shell", inline: $script2
