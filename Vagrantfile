@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     #target.vm.network "forwarded_port", guest: 80, host: 8080
     target.vm.provision "shell", inline: $script2
     target.vm.provision "file", source: "./server", destination: "/tmp/html"
-    target.vm.provision "shell", inline: "rm /var/www/html/index.html; mv /tmp/html/* /var/www/html"
+    target.vm.provision "shell", inline: "rm -r /var/www/html/*; mv /tmp/html/* /var/www/html; sudo chmod -R 777 /var/www/html/uploads/"
   end
   config.vm.define "attacker" do |attacker|
       attacker.vm.box = "kalilinux/rolling"
