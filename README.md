@@ -54,7 +54,7 @@ Depuis un nouveau terminal kali, depuis le dossier server sur le bureau, lancher
 
 > python -m SimpleHTTPServer
 
-Depuis le reverse shell, supprimer index.html, puis télécharger les fichiers nécessaires à afficher la nouvelle page d'acceuil:
+Depuis le reverse shell, supprimer index.html, puis télécharger les fichiers nécessaires à afficher la nouvelle page d'accueil:
 
 > rm index.html
 
