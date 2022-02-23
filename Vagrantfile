@@ -2,6 +2,8 @@ $script = <<-'SCRIPT'
 sudo setxkbmap fr
 sudo loadkeys fr
 sudo sed -ie '/^XKBLAYOUT=/s/".*"/"fr"/' /etc/default/keyboard && udevadm trigger --subsystem-match=input --action=change
+mkdir /home/vagrant/Desktop
+mv /tmp/shell.php /home/vagrant/Desktop/
 SCRIPT
 
 $script2 = <<-'SCRIPT'
@@ -12,6 +14,8 @@ sudo apt-get install -y libapache2-mod-php
 sudo setxkbmap fr
 sudo loadkeys fr
 sudo sed -ie '/^XKBLAYOUT=/s/".*"/"fr"/' /etc/default/keyboard && udevadm trigger --subsystem-match=input --action=change
+sudo apt-get install -y python
+sudo chmod u+s /usr/bin/python2.7
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -26,7 +30,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "attacker" do |attacker|
       attacker.vm.box = "kalilinux/rolling"
       attacker.vm.network "private_network", ip: "192.168.60.11"
-      attacker.vm.provision "shell", inline: $script      
+      attacker.vm.provision "file", source: "./shell.php", destination: "/tmp/shell.php"
+      attacker.vm.provision "shell", inline: $script
       #attacker.memory = "2048"
   end
 #
