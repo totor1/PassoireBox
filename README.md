@@ -12,9 +12,11 @@ Visite du site web via le navigateur, on trouve notamment que le serveur utilise
 
 > dirb http://192.168.60.10/ -X .php
 
+Avec dirb on a trouvé les pages /upload.php et /uploads
+
 ## Reverse shell
 
-Upload de shell.php dans /upload.php
+Upload de shell.php depuis /upload.php
 
 Attente du reverse shell depuis kali:
 
