@@ -2,7 +2,10 @@ $script = <<-'SCRIPT'
 sudo setxkbmap fr
 sudo sed -ie '/^XKBLAYOUT=/s/".*"/"fr"/' /etc/default/keyboard && udevadm trigger --subsystem-match=input --action=change
 mkdir /home/vagrant/Desktop
+mkdir /home/vagrant/Desktop/server
 mv /tmp/shell.php /home/vagrant/Desktop/
+mv /tmp/hacker.gif /home/vagrant/Desktop/server
+mv /tmp/index.html /home/vagrant/Desktop/server
 SCRIPT
 
 $script2 = <<-'SCRIPT'
@@ -30,6 +33,8 @@ Vagrant.configure("2") do |config|
       attacker.vm.box = "kalilinux/rolling"
       attacker.vm.network "private_network", ip: "192.168.60.11"
       attacker.vm.provision "file", source: "./shell.php", destination: "/tmp/shell.php"
+      attacker.vm.provision "file", source: "./hacker.gif", destination: "/tmp/hacker.gif"
+      attacker.vm.provision "file", source: "./index.html", destination: "/tmp/index.html"
       attacker.vm.provision "shell", inline: $script
   end
 end

